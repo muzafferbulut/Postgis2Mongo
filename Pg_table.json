@@ -1,0 +1,12 @@
+{
+  "Column1":"col1",
+  "Column2":"col2",
+  "Column3":"col3",
+  "Column4":"col4",
+  "Column5":"col5",
+  "Column6":"col6",
+  "Column7":"col7",
+  "Column8":"col8",
+  "GeometryColumn" :"geometrycolumn",
+  "Table":"table_name"
+}
