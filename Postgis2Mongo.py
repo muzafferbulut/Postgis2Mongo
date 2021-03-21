@@ -58,12 +58,12 @@ ConfigFile = OpenJson("Pg_config.json") # read file
 TableInfo = OpenJson("Pg_table.json") # read file
 MongoInfo  = OpenJson("MongoInfo.json")
 
-# pg column list
-ColumnList = BuildColumnList(TableInfo)
-
 # connect pg database
 conn = ConnectToPGDatabase(ConfigFile)
 cur = conn.cursor()
+
+# pg column list
+ColumnList = BuildColumnList(TableInfo)
 
 # query building
 query = QueryBuild(ColumnList)
