@@ -44,14 +44,22 @@ def BuildDict(ColumnList,PgTable): # convert query to dict
             RecordDict[ColumnList[j]] = PgTable[i][j]
     return RecordDict
 
+def BuildColumnList(TableInfo):
+    listLength = len(TableInfo)-2
+    ColumnList = []
+    counter =1
+    for i in range(listLength):
+        ColumnList.append(TableInfo["Column"+str(counter)])
+        counter +=1
+    ColumnList.append(TableInfo["GeometryColumn"])
+    return ColumnList
+
 ConfigFile = OpenJson("Pg_config.json") # read file
 TableInfo = OpenJson("Pg_table.json") # read file
 MongoInfo  = OpenJson("MongoInfo.json")
 
 # pg column list
-ColumnList = [TableInfo["Column1"],TableInfo["Column2"],TableInfo["Column3"],
-              TableInfo["Column4"],TableInfo["Column5"],TableInfo["Column6"],
-              TableInfo["Column7"],TableInfo["Column8"],TableInfo["GeometryColumn"]]
+ColumnList = BuildColumnList(TableInfo)
 
 # connect pg database
 conn = ConnectToPGDatabase(ConfigFile)
